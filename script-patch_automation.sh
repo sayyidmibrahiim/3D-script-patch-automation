@@ -183,7 +183,7 @@ text="$text%0ADate              :  $(date +'%d-%m-%y') ($(date '+%T'))"
 text="$text%0AObject From :  $of"
 text="$text%0ANeeds For     :  $reason"
 
-trap '' 2
+
 #Curl mengirimkan notifikasi ke channel telegram notification patching
 curl -s -d parse_mode=HTML -d chat_id="$chat_id" -d text="$text" https://api.telegram.org/bot$token/sendMessage > /dev/null 2>&1
 
@@ -374,9 +374,6 @@ echo -e "$batas2"
 #Informasi kalau mulai proses patching
 echo -e "$batas1"
 echo -e "Mulai ngpatch objek terbaru"
-
-#Mengabaikan signal ctrl+C
-trap '' 2
 
 #Membuat direktori backup object sebelum patch
 cd $folder_patch
@@ -1255,4 +1252,3 @@ if [ $file == true ]; then
 else
         sleep 0.1
 fi
-trap 2
